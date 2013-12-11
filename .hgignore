@@ -7,3 +7,4 @@ Module.symvers
 *.mod.c
 modules.order
 *tmp*
+rebuild
