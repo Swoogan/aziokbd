@@ -1,3 +1,9 @@
 syntax: glob
 *.o
+*.o.*
 *.ko
+*.ko.*
+Module.symvers
+*.mod.c
+modules.order
+*tmp*
