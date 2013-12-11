@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 1999-2001 Vojtech Pavlik
+ *  Copyright (c) 2013 Colin Svingen
  *
  *  USB HIDBP Keyboard support
  */
@@ -20,8 +20,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  * Should you need to contact me, the author, you can do so either by
- * e-mail - mail your message to <vojtech@ucw.cz>, or by paper mail:
- * Vojtech Pavlik, Simunkova 1594, Prague 8, 182 00 Czech Republic
+ * e-mail - mail your message to <swoogan@hotmail.com>, or by paper mail:
+ * Colin Svingen, 
  */
 
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
@@ -38,7 +38,7 @@
  */
 #define DRIVER_VERSION ""
 #define DRIVER_AUTHOR "Colin Svingen <swoogan@hotmail.com>"
-#define DRIVER_DESC "Azio L40 Keyboard Driver"
+#define DRIVER_DESC "Azio L70 Keyboard Driver"
 #define DRIVER_LICENSE "GPL"
 #define ML_VENDOR_ID   0x0c45
 #define ML_PRODUCT_ID  0x7603
@@ -50,7 +50,7 @@ MODULE_LICENSE(DRIVER_LICENSE);
 static const unsigned char az_kbd_keycode[256] = {
 	  /* BEGIN 04 */
 	  KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-	  KEY_LEFTCTRL, KEY_LEFTSHIFT, KEY_LEFTALT, KEY_LEFTMETA, KEY_RIGHTCTRL, KEY_RESERVED, KEY_RIGHTALT, KEY_RESERVED,   
+	  KEY_LEFTCTRL, KEY_LEFTSHIFT, KEY_LEFTALT, KEY_LEFTMETA, KEY_RIGHTCTRL, KEY_RIGHTSHIFT, KEY_RIGHTALT, KEY_RESERVED,   
 	  KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_A, KEY_B, KEY_C, KEY_D, 
 	  KEY_E, KEY_F, KEY_G, KEY_H, KEY_I, KEY_J, KEY_K, KEY_L,
 	  KEY_M, KEY_N, KEY_O, KEY_P, KEY_Q, KEY_R, KEY_S, KEY_T,
@@ -66,8 +66,8 @@ static const unsigned char az_kbd_keycode[256] = {
 	  KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12, KEY_SYSRQ, KEY_RESERVED,
 	  KEY_PAUSE, KEY_INSERT, KEY_HOME, KEY_PAGEUP, KEY_DELETE, KEY_END, KEY_PAGEDOWN, KEY_RIGHT, 
 	  KEY_LEFT, KEY_DOWN, KEY_UP, KEY_NUMLOCK, KEY_KPSLASH, KEY_KPASTERISK, KEY_KPMINUS, KEY_KPPLUS,
-	  KEY_KPENTER, KEY_KP1, KEY_KP2, KEY_KP3, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_KP7,   
-	  KEY_KP8, KEY_KP9, KEY_KP0, KEY_KPDOT, KEY_KP4, KEY_KP5, KEY_KP6, KEY_RESERVED,   
+	  KEY_KPENTER, KEY_KP1, KEY_KP2, KEY_KP3, KEY_KP4, KEY_KP5, KEY_KP6, KEY_KP7,   
+	  KEY_KP8, KEY_KP9, KEY_KP0, KEY_KPDOT, KEY_RESERVED, KEY_MENU, KEY_RESERVED, KEY_RESERVED,
 	  /* END 05 */
 	  
 	  KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
@@ -122,19 +122,16 @@ static void usb_kbd_irq(struct urb *urb)
 		goto resubmit;
 	}
 
-// 	printk("First new %d\n", kbd->new[0]);
+ 	printk("First new %d\n", kbd->new[0]);
 
 	if (kbd->new[0] == 1) {
 // 	    printk("Second new %d\n", kbd->new[1]);
 // 	    printk("Second old %d\n", kbd->old[1]);
-	    if (kbd->new[1] == 234 && kbd->old[1] != 234) {
-		input_report_key(kbd->dev, KEY_A, 1);
-		printk("here\n");
-	    }
-	    if (kbd->old[1] == 234 && kbd->new[1] != 234) {
-		input_report_key(kbd->dev, KEY_A, 0);
-		printk("here2\n");
-	    }
+
+	    if (kbd->new[1] == 234 && kbd->old[1] != 234)
+		input_report_key(kbd->dev, KEY_VOLUMEDOWN, 1);
+	    if (kbd->old[1] == 234 && kbd->new[1] != 234)
+		input_report_key(kbd->dev, KEY_VOLUMEDOWN, 0);
 	
  	    if (kbd->new[1] == 233 && kbd->old[1] != 233) 
  		input_report_key(kbd->dev, KEY_VOLUMEUP, 1);
@@ -157,11 +154,11 @@ static void usb_kbd_irq(struct urb *urb)
  	}
 	
 
-// 	for (i = 1; i < 8; i++)
-// 	    printk("<1>Old key: %d\n", kbd->old[i]);		
-// 
-// 	for (i = 1; i < 8; i++)
-// 	    printk("<1>New key: %d\n", kbd->new[i]);
+ 	for (i = 1; i < 8; i++)
+ 	    printk("<1>Old key: %d\n", kbd->old[i]);		
+ 
+ 	for (i = 1; i < 8; i++)
+ 	    printk("<1>New key: %d\n", kbd->new[i]);
 	
 	input_sync(kbd->dev);
 
