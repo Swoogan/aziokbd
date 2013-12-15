@@ -70,7 +70,7 @@ static const unsigned char az_kbd_keycode[256] = {
 	  KEY_KP8, KEY_KP9, KEY_KP0, KEY_KPDOT, KEY_RESERVED, KEY_MENU, KEY_RESERVED, KEY_RESERVED,
 	  /* END 05 */
 	  
-	  KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
+	  KEY_VOLUMEDOWN, KEY_VOLUMEUP, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
 	  KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
 	  KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
 	  KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
@@ -127,17 +127,18 @@ static void usb_kbd_irq(struct urb *urb)
 
 	if (kbd->new[0] == 1) {
 // 	    printk("Second new %d\n", kbd->new[1]);
-// 	    printk("Second old %d\n", kbd->old[1]);
 
+	    // volume down 
 	    if (kbd->new[1] == 234 && kbd->old[1] != 234)
-		input_report_key(kbd->dev, KEY_VOLUMEDOWN, 1);
+		input_report_key(kbd->dev, az_kbd_keycode[128], 1);
 	    if (kbd->old[1] == 234 && kbd->new[1] != 234)
-		input_report_key(kbd->dev, KEY_VOLUMEDOWN, 0);
+		input_report_key(kbd->dev, az_kbd_keycode[128], 0);
 	
+	    // volume up
  	    if (kbd->new[1] == 233 && kbd->old[1] != 233) 
- 		input_report_key(kbd->dev, KEY_VOLUMEUP, 1);
+ 		input_report_key(kbd->dev, az_kbd_keycode[129], 1);
  	    if (kbd->old[1] == 233 && kbd->new[1] != 233) 
- 		input_report_key(kbd->dev, KEY_VOLUMEUP, 0);
+ 		input_report_key(kbd->dev, az_kbd_keycode[129], 0);
 	}
  	else if (kbd->new[0] == 4) {
  	    for (j = 0; j < 8; j++) {
@@ -183,7 +184,7 @@ static int usb_kbd_event(struct input_dev *dev, unsigned int type,
 	if (type != EV_LED)
 		return -1;
 
- 	printk("<1>Led: %lu\n", *(dev->led));		
+ 	//printk("<1>Led: %lu\n", *(dev->led));		
 
 	kbd->newleds = (!!test_bit(LED_KANA,    dev->led) << 3) | (!!test_bit(LED_COMPOSE, dev->led) << 3) |
 		       (!!test_bit(LED_SCROLLL, dev->led) << 2) | (!!test_bit(LED_CAPSL,   dev->led) << 1) |
@@ -207,24 +208,21 @@ static void usb_kbd_led(struct urb *urb)
 {
 	struct usb_kbd *kbd = urb->context;
 
- 	printk("<1>newleds 32: %d\n", kbd->newleds);		
+// 	printk("<1>newleds 32: %d\n", kbd->newleds);		
 
 	if (urb->status)
 		hid_warn(urb->dev, "led urb status %d received\n",
 			 urb->status);
 
 	if (*(kbd->leds) == kbd->newleds)
-	{
-		printk("<1>nothing changed anyway.");
 		return;
-	}
 
 	*(kbd->leds) = kbd->newleds;
 	kbd->led->dev = kbd->usbdev;
 
- 	printk("<1>here\n");		
-	//if (usb_submit_urb(kbd->led, GFP_ATOMIC))
-	//	hid_err(urb->dev, "usb_submit_urb(leds) failed\n");
+// 	printk("<1>here\n");		
+	if (usb_submit_urb(kbd->led, GFP_ATOMIC))
+		hid_err(urb->dev, "usb_submit_urb(leds) failed\n");
 }
 
 static int usb_kbd_open(struct input_dev *dev)
