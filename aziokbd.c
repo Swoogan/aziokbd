@@ -214,10 +214,15 @@ static void usb_kbd_led(struct urb *urb)
 			 urb->status);
 
 	if (*(kbd->leds) == kbd->newleds)
+	{
+		printk("<1>nothing changed anyway.");
 		return;
+	}
 
 	*(kbd->leds) = kbd->newleds;
 	kbd->led->dev = kbd->usbdev;
+
+ 	printk("<1>here\n");		
 	//if (usb_submit_urb(kbd->led, GFP_ATOMIC))
 	//	hid_err(urb->dev, "usb_submit_urb(leds) failed\n");
 }
@@ -349,7 +354,8 @@ static int usb_kbd_probe(struct usb_interface *iface,
 	kbd->cr->bRequestType = USB_TYPE_CLASS | USB_RECIP_INTERFACE;
 	kbd->cr->bRequest = 0x09;
 	kbd->cr->wValue = cpu_to_le16(0x200);
-	kbd->cr->wIndex = cpu_to_le16(interface->desc.bInterfaceNumber);
+	//kbd->cr->wIndex = cpu_to_le16(interface->desc.bInterfaceNumber);
+	kbd->cr->wIndex = cpu_to_le16(0);
 	kbd->cr->wLength = cpu_to_le16(1);
 
 	usb_fill_control_urb(kbd->led, dev, usb_sndctrlpipe(dev, 0),
