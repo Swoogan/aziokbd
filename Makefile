@@ -26,7 +26,7 @@ clean:
 
 install:
 	cp aziokbd.ko /lib/modules/$(shell uname -r)/kernel/drivers/input/keyboard
-	#echo 'aziokbd' >> /etc/modules
+	echo 'aziokbd' >> /etc/modules
 	depmod
         
 endif
