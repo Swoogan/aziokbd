@@ -1,7 +1,7 @@
 /*
  *  Copyright (c) 2013 Colin Svingen
  *
- *  USB HIDBP Keyboard support
+ *  Azio L70 USB Keyboard support
  */
 
 /*
@@ -19,9 +19,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
- * Should you need to contact me, the author, you can do so either by
- * e-mail - mail your message to <swoogan@hotmail.com>, or by paper mail:
- * Colin Svingen, 
+ * Should you need to contact me, the author, you can do so by email.
+ * Mail your message to Colin Svingen <swoogan@hotmail.com>
  */
 
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
@@ -122,12 +121,16 @@ static void usb_kbd_irq(struct urb *urb)
 		goto resubmit;
 	}
 
-// 	printk("First new %d\n", kbd->new[0]);
+/*
+ 	for (i = 1; i < 8; i++)
+ 	    printk("<1>Old key: %d\n", kbd->old[i]);		
+ 
+ 	for (i = 1; i < 8; i++)
+ 	    printk("<1>New key: %d\n", kbd->new[i]);
+*/
 
 
 	if (kbd->new[0] == 1) {
-// 	    printk("Second new %d\n", kbd->new[1]);
-
 	    // volume down 
 	    if (kbd->new[1] == 234 && kbd->old[1] != 234)
 		input_report_key(kbd->dev, az_kbd_keycode[128], 1);
@@ -141,28 +144,19 @@ static void usb_kbd_irq(struct urb *urb)
  		input_report_key(kbd->dev, az_kbd_keycode[129], 0);
 	}
  	else if (kbd->new[0] == 4) {
- 	    for (j = 0; j < 8; j++) {
+ 	    for (j = 1; j < 8; j++) {
  		offset = j * 8;
  		for (i = 0; i < 8; i++)
  		    input_report_key(kbd->dev, az_kbd_keycode[offset + i], (kbd->new[j] >> i) & 1);	  
  	    }
  	}
  	else if (kbd->new[0] == 5) {
- 	    for (j = 0; j < 8; j++) {
+ 	    for (j = 1; j < 8; j++) {
  		offset = (j * 8) + 64;
  		for (i = 0; i < 8; i++)
  		    input_report_key(kbd->dev, az_kbd_keycode[offset + i], (kbd->new[j] >> i) & 1);	  		
  	    }
  	}
-	
-/*
- 	for (i = 1; i < 8; i++)
- 	    printk("<1>Old key: %d\n", kbd->old[i]);		
- 
- 	for (i = 1; i < 8; i++)
- 	    printk("<1>New key: %d\n", kbd->new[i]);
-*/
-
 	
 	input_sync(kbd->dev);
 
@@ -183,8 +177,6 @@ static int usb_kbd_event(struct input_dev *dev, unsigned int type,
 
 	if (type != EV_LED)
 		return -1;
-
- 	//printk("<1>Led: %lu\n", *(dev->led));		
 
 	kbd->newleds = (!!test_bit(LED_KANA,    dev->led) << 3) | (!!test_bit(LED_COMPOSE, dev->led) << 3) |
 		       (!!test_bit(LED_SCROLLL, dev->led) << 2) | (!!test_bit(LED_CAPSL,   dev->led) << 1) |
@@ -208,8 +200,6 @@ static void usb_kbd_led(struct urb *urb)
 {
 	struct usb_kbd *kbd = urb->context;
 
-// 	printk("<1>newleds 32: %d\n", kbd->newleds);		
-
 	if (urb->status)
 		hid_warn(urb->dev, "led urb status %d received\n",
 			 urb->status);
@@ -220,7 +210,6 @@ static void usb_kbd_led(struct urb *urb)
 	*(kbd->leds) = kbd->newleds;
 	kbd->led->dev = kbd->usbdev;
 
-// 	printk("<1>here\n");		
 	if (usb_submit_urb(kbd->led, GFP_ATOMIC))
 		hid_err(urb->dev, "usb_submit_urb(leds) failed\n");
 }
