@@ -22,7 +22,6 @@ default:
 
 clean:
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) clean
-	rm *.symvers
 
 install:
 	cp aziokbd.ko /lib/modules/$(shell uname -r)/kernel/drivers/input/keyboard
