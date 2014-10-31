@@ -1,6 +1,11 @@
 # Uncomment the following to enable debug.
 #DEBUG = y
 
+KVER := $(shell uname -r)
+KSRC := /lib/modules/$(KVER)/build
+MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/input/keyboard
+MODULE_NAME := aziokbd
+
 ifeq ($(DEBUG),y)
         DBGFLAGS = -O -g -DML_DEBUG
 else
@@ -11,21 +16,27 @@ ccflags-y += $(DBGFLAGS)
 
 
 ifneq ($(KERNELRELEASE),)
-        obj-m := aziokbd.o
-
+        obj-m := $(MODULE_NAME).o
 else
-        KERNELDIR ?= /lib/modules/$(shell uname -r)/build
+        KSRC := /lib/modules/$(KVER)/build
         PWD := $(shell pwd)
 
 default:
-	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
+	$(MAKE) -C $(KSRC) M=$(PWD) modules
 
 clean:
-	$(MAKE) -C $(KERNELDIR) M=$(PWD) clean
+	$(MAKE) -C $(KSRC) M=$(PWD) clean
+
+uninstall:
+	rm -f $(MODDESTDIR)/$(MODULE_NAME).ko
+	/sbin/depmod -a ${KVER}
 
 install:
-	cp aziokbd.ko /lib/modules/$(shell uname -r)/kernel/drivers/input/keyboard
+	install -p -m 644 $(MODULE_NAME).ko  $(MODDESTDIR)
+	/sbin/depmod -a ${KVER}
+
+	# Hmmm... not removed on uninstall...
+	echo 'options usbhid quirks=0x0c45:0x7603:0x0007' >> /etc/modprobe.d/usbhid.conf
 	echo 'aziokbd' >> /etc/modules
-	depmod
         
 endif
