@@ -38,5 +38,16 @@ install:
 	# Hmmm... not removed on uninstall...
 	echo 'options usbhid quirks=0x0c45:0x7603:0x0007' >> /etc/modprobe.d/usbhid.conf
 	echo 'aziokbd' >> /etc/modules
+
+dkms:  clean 
+	rm -rf /usr/src/$(MODULE_NAME)-1.0.0
+	mkdir /usr/src/$(MODULE_NAME)-1.0.0 -p
+	cp . /usr/src/$(MODULE_NAME)-1.0.0 -a
+	rm -rf /usr/src/$(MODULE_NAME)-1.0.0/.hg
+	dkms add -m $(MODULE_NAME) -v 1.0.0
+	dkms build -m $(MODULE_NAME) -v 1.0.0
+	dkms install -m $(MODULE_NAME) -v 1.0.0 --force
+	echo 'options usbhid quirks=0x0c45:0x7603:0x0007' >> /etc/modprobe.d/usbhid.conf
+
         
 endif
