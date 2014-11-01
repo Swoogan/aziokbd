@@ -9,7 +9,7 @@ NOTE: Makefile and instructions are only tested on Ubuntu.
     sudo apt-get install mercurial build-essential linux-headers-generic dkms
     hg clone https://bitbucket.org/Swoogan/aziokbd
     cd aziokbd
-    sudo make dkms
+    sudo ./install.sh dkms
 
 ## Manual Install ##
 
@@ -17,7 +17,7 @@ NOTE: Makefile and instructions are only tested on Ubuntu.
     hg clone https://bitbucket.org/Swoogan/aziokbd
     cd aziokbd
     make
-    sudo make install
+    sudo ./install.sh
 
 If the keyboard still isn't blacklisted from the generic usb hid driver, change the 0x0007 in the quirks to 0x0004.
 
