@@ -26,4 +26,9 @@ fi
 
 echo '## Starting module ##'
 modprobe aziokbd
+
+# Note: this line may fail if you have other drivers loaded that depend
+# on usbhid. For example, your mouse driver. In that case you would have
+# to remove those drivers first, then load them again.
+echo '## Attempting to reload usbhid module ##'
 rmmod usbhid && modprobe usbhid $quirk
