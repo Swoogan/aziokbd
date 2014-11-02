@@ -35,8 +35,6 @@ install:
 	install -p -m 644 $(MODULE_NAME).ko  $(MODDESTDIR)
 	/sbin/depmod -a ${KVER}
 
-	# Hmmm... not removed on uninstall...
-
 dkms:  clean
 	rm -rf /usr/src/$(MODULE_NAME)-1.0.0
 	mkdir /usr/src/$(MODULE_NAME)-1.0.0 -p
