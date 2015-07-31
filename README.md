@@ -21,7 +21,9 @@ Written for the Azio L70 USB Keyboard: [L70 USB Backlit Gaming Keyboard (KB501)]
     cd aziokbd
     sudo ./install.sh
 
-# Blacklisting #
+# Blacklisting (NOTE: install.sh attempts to blacklist the driver for you) #
+
+**NOTE: install.sh attempts to blacklist the driver for you. You shouldn't need to do anything manually. These instructions are to explain the process, in the event something goes wrong.**
 
 You need to blacklist the device from the generic USB hid driver in order for the aziokbd driver to control it.
 
