@@ -14,14 +14,14 @@ fi
 
 
 quirk='0x0c45:0x7603:0x0007'
-modquirk='options usbhid quirks=$quirk'
-grubquirk='usbhid.quirks=$quirk'
+modquirk="options usbhid quirks=$quirk"
+grubquirk="usbhid.quirks=$quirk"
 
-if (grep 'usbhid' /etc/modules); then
+if (lsmod | grep 'usbhid'); then
     echo '## usbhid is module ##'
 
     # Making sure the quirk does not get added multiple times
-    if ! (grep $modquirk /etc/modprobe.d/usbhid.conf); then
+    if ! (cat /etc/modprobe.d/usbhid.conf | grep "$modquirk"); then
         echo '## Writing to /etc/modprobe.d/usbhid.conf ##'
         echo $modquirk >> /etc/modprobe.d/usbhid.conf
         if [[ $1 != 'dkms' ]]; then sudo echo 'aziokbd' >> /etc/modules; fi
@@ -42,7 +42,7 @@ else
     echo '## usbhid is compiled into kernel ##'
 
     # Making sure the quirk does not get added multiple times
-    if ! (grep $grubquirk /etc/default/grub.d/aziokbd.conf); then
+    if ! (cat /etc/default/grub.d/aziokbd.conf | grep "$grubquirk"); then
         echo '## Writing to /etc/default/grub.d/aziokbd.conf ##'
         echo $grubquirk >> /etc/default/grub.d/aziokbd.conf
     else
