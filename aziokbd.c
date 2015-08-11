@@ -122,10 +122,10 @@ static void usb_kbd_irq(struct urb *urb)
 	}
 
 /*
- 	for (i = 1; i < 8; i++)
+ 	for (i = 0; i < 8; i++)
  	    printk("<1>Old key: %d\n", kbd->old[i]);		
  
- 	for (i = 1; i < 8; i++)
+ 	for (i = 0; i < 8; i++)
  	    printk("<1>New key: %d\n", kbd->new[i]);
 */
 
