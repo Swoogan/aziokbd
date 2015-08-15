@@ -40,6 +40,7 @@ dkms:  clean
 	mkdir /usr/src/$(MODULE_NAME)-1.0.0 -p
 	cp . /usr/src/$(MODULE_NAME)-1.0.0 -a
 	rm -rf /usr/src/$(MODULE_NAME)-1.0.0/.hg
+	dkms remove aziokbd/1.0.0 --all
 	dkms add -m $(MODULE_NAME) -v 1.0.0
 	dkms build -m $(MODULE_NAME) -v 1.0.0
 	dkms install -m $(MODULE_NAME) -v 1.0.0 --force
