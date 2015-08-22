@@ -5,6 +5,7 @@ KVER := $(shell uname -r)
 KSRC := /lib/modules/$(KVER)/build
 MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/input/keyboard
 MODULE_NAME := aziokbd
+MODULE_VER := 1.0.0
 
 ifeq ($(DEBUG),y)
         DBGFLAGS = -O -g -DML_DEBUG
@@ -36,13 +37,13 @@ install:
 	/sbin/depmod -a ${KVER}
 
 dkms:  clean
-	rm -rf /usr/src/$(MODULE_NAME)-1.0.0
-	mkdir /usr/src/$(MODULE_NAME)-1.0.0 -p
-	cp . /usr/src/$(MODULE_NAME)-1.0.0 -a
-	rm -rf /usr/src/$(MODULE_NAME)-1.0.0/.hg
-	dkms remove aziokbd/1.0.0 --all
-	dkms add -m $(MODULE_NAME) -v 1.0.0
-	dkms build -m $(MODULE_NAME) -v 1.0.0
-	dkms install -m $(MODULE_NAME) -v 1.0.0 --force
+	rm -rf /usr/src/$(MODULE_NAME)-$(MODULE_VER)
+	mkdir /usr/src/$(MODULE_NAME)-$(MODULE_VER) -p
+	cp . /usr/src/$(MODULE_NAME)-$(MODULE_VER) -a
+	rm -rf /usr/src/$(MODULE_NAME)-$(MODULE_VER)/.hg
+	if (dkms status $(MODULE_NAME)/$(MODULE_VER)); then dkms remove $(MODULE_NAME)/$(MODULE_VER) --all; fi
+	dkms add -m $(MODULE_NAME) -v $(MODULE_VER)
+	dkms build -m $(MODULE_NAME) -v $(MODULE_VER)
+	dkms install -m $(MODULE_NAME) -v $(MODULE_VER) --force
 
 endif
