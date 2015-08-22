@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [[ $1 != 'dkms' ]]; then
     echo '## Making package ##'
     make
@@ -11,7 +10,6 @@ else
     echo '## Installing package with DKMS ##'
     make dkms
 fi
-
 
 quirk='0x0c45:0x7603:0x0007'
 modquirk="options usbhid quirks=$quirk"

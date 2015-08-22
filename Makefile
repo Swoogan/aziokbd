@@ -21,6 +21,14 @@ ifneq ($(KERNELRELEASE),)
 else
         KSRC := /lib/modules/$(KVER)/build
         PWD := $(shell pwd)
+endif
+	#@if [ -n $(dkms status $(MODULE_NAME)/$(MODULE_VER)) ]; then \
+
+define REMOVE_MODULE
+	@if [ -n "`dkms status $(MODULE_NAME)/$(MODULE_VER)`" ]; then \
+		dkms remove $(MODULE_NAME)/$(MODULE_VER) --all; \
+	fi;
+endef
 
 default:
 	$(MAKE) -C $(KSRC) M=$(PWD) modules
@@ -41,9 +49,8 @@ dkms:  clean
 	mkdir /usr/src/$(MODULE_NAME)-$(MODULE_VER) -p
 	cp . /usr/src/$(MODULE_NAME)-$(MODULE_VER) -a
 	rm -rf /usr/src/$(MODULE_NAME)-$(MODULE_VER)/.hg
-	if (dkms status $(MODULE_NAME)/$(MODULE_VER)); then dkms remove $(MODULE_NAME)/$(MODULE_VER) --all; fi
+	$(REMOVE_MODULE)
 	dkms add -m $(MODULE_NAME) -v $(MODULE_VER)
 	dkms build -m $(MODULE_NAME) -v $(MODULE_VER)
 	dkms install -m $(MODULE_NAME) -v $(MODULE_VER) --force
 
-endif
