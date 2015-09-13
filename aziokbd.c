@@ -109,6 +109,7 @@ static void usb_kbd_irq(struct urb *urb)
 {
 	struct usb_kbd *kbd = urb->context;
 	int i, j, offset;
+	char keys[9];
 	
 	switch (urb->status) {
 	case 0:			/* success */
@@ -123,13 +124,29 @@ static void usb_kbd_irq(struct urb *urb)
 	}
 
 /*
+ 	printk("Keyup keycode: ");		
+
  	for (i = 0; i < 8; i++)
- 	    printk("<1>Old key: %d\n", kbd->old[i]);		
- 
-        // for logging keycodes "dmesg -wH" in terminal
- 	for (i = 0; i < 8; i++)
- 	    printk("<1>New key: %d\n", kbd->new[i]);
+ 	    printk("%d ", kbd->old[i]);		
+
+	printk("\n");
 */
+
+/*
+        // The following lines are for logging keypresses to the 
+	// kernel dmesg facility. Uncomment the following lines
+	// to capture the keycode for any non-functioning keys
+	// and open a new issue on bitbucket.org with the key 
+	// you pressed and the keycode output below. 
+	
+ 	printk("Keydown keycode: ");		
+
+ 	for (i = 0; i < 8; i++)
+ 	    printk("%d ", kbd->new[i]);		
+
+	printk("\n");
+*/
+
 
 	if (kbd->new[0] == 1) {	    
 	    // volume down 
