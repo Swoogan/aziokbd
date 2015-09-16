@@ -40,7 +40,7 @@ Create a file called `/etc/modprobe.d/usbhid.conf` and add the following to it:
 
     options usbhid quirks=0x0c45:0x7603:0x0004
 
-If you find that the generic USB driver is still taking the device, try changing the `Ox0007` to a `0x0004`.
+If you find that the generic USB driver is still taking the device, try changing the `0x0004` to a `0x0007`.
 
 ## Compiled into Kernel ##
 If the generic USB hid driver is compiled into the kernel, then the driver is not loaded as a module and setting the option via `modprobe` will not work. In this case you must pass the option to the driver via the grub boot loader.
