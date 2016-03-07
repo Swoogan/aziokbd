@@ -18,10 +18,18 @@ Reportedy supports the following keyboards as well:
 # Installation ##
 ## DKMS ##
 
+    # debian-based:
     sudo apt-get install mercurial build-essential linux-headers-generic dkms
+    
+    # fedora:
+    sudo dnf install kernel-devel kernel-headers
+    sudo dnf groupinstall "Development Tools" "Development Libraries"
+    
     hg clone https://bitbucket.org/Swoogan/aziokbd
     cd aziokbd
     sudo ./install.sh dkms
+    
+    
 
 ## Manual Install ##
 
