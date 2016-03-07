@@ -45,7 +45,13 @@ else
         echo $grubquirk >> /etc/default/grub.d/aziokbd.conf
         $distro = $(lsb_release -si)
         if ($distro | grep 'Ubuntu'); then
-            update-grub2
+            update-grub
+        fi
+        if [ -f "/etc/arch-release" ]; then
+            update-grub
+        fi
+        if [ -f "/etc/fedora-release" ]; then
+            grub2-mkconfig -o /boot/grub2/grub.cfg
         fi
     else
        echo 'NOTICE - grub config file has already been updated'

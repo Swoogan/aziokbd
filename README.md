@@ -5,7 +5,7 @@ The kernel reports the chipset as `SONiX USB Keyboard`
 
 Written for the Azio L70 USB Keyboard: [L70 USB Backlit Gaming Keyboard (KB501)](http://www.aziocorp.com/en/keyboards/23-l70-usb-backlit-gaming-keyboard-kb501-0676151010719.html)
 
-> NOTE: Makefile and instructions are only tested on Ubuntu, however they are known to work on Debian.
+> NOTE: Makefile and instructions are only tested on Ubuntu, however they are known to work on Debian, Arch, Fedora, and Manjaro.
 
 Reportedy supports the following keyboards as well:
 
@@ -14,6 +14,7 @@ Reportedy supports the following keyboards as well:
  * GAMDIAS USB Keyboard (unspecified model but will report as Microdia chipset)
  * Avazz USB Keyboard (unspecified model but will report as Microdia chipset)
  * Perixx P1800
+ * Modecom MC800-Volcano
 
 # Installation ##
 ## DKMS ##
