@@ -14,7 +14,8 @@ Reportedy supports the following keyboards as well:
  * GAMDIAS USB Keyboard (unspecified model but will report as Microdia chipset)
  * Avazz USB Keyboard (unspecified model but will report as Microdia chipset)
  * Perixx P1800
- * Modecom MC800-Volcano
+ * Modecom MC800-Volcano 
+ * Serioux Radiant KBL-003
 
 # Installation ##
 ## DKMS ##
