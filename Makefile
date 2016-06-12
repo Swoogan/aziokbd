@@ -14,7 +14,9 @@ else
 endif
 
 ccflags-y += $(DBGFLAGS)
-
+ifeq ($(BKSLFIX),y)
+	ccflags-y += -DBACKSLASH_FIX
+endif
 
 ifneq ($(KERNELRELEASE),)
         obj-m := $(MODULE_NAME).o

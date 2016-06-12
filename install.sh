@@ -1,8 +1,16 @@
 #!/bin/bash
 
+read -n 1 -p "Backslash fix (y/N)?" choice
+echo
+
+case "$choice" in 
+  y|Y ) BKSL='BKSLFIX=y';;
+  * ) BKSL='BKSLFIX=n';;
+esac
+
 if [[ $1 != 'dkms' ]]; then
     echo '## Making package ##'
-    make
+    make ${BKSL}
 
     echo '## Installing package ##'
     make install
