@@ -48,46 +48,47 @@ MODULE_LICENSE(DRIVER_LICENSE);
 
 static const unsigned char az_kbd_keycode[256] = {
 		/* BEGIN 04 */
-/* 0-7 */	KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 8-15 */	KEY_LEFTCTRL, KEY_LEFTSHIFT, KEY_LEFTALT, KEY_LEFTMETA, KEY_RIGHTCTRL, KEY_RIGHTSHIFT, KEY_RIGHTALT, KEY_RESERVED,   
-/* 16-23 */	KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_A, KEY_B, KEY_C, KEY_D, 
+/* 0-7 */	KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 8-15 */	KEY_LEFTCTRL, KEY_LEFTSHIFT, KEY_LEFTALT, KEY_LEFTMETA, KEY_RIGHTCTRL, KEY_RIGHTSHIFT, KEY_RIGHTALT, KEY_RESERVED,
+/* 16-23 */	KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_A, KEY_B, KEY_C, KEY_D,
 /* 24-31 */	KEY_E, KEY_F, KEY_G, KEY_H, KEY_I, KEY_J, KEY_K, KEY_L,
 /* 32-39 */	KEY_M, KEY_N, KEY_O, KEY_P, KEY_Q, KEY_R, KEY_S, KEY_T,
-/* 40-47 */	KEY_U, KEY_V, KEY_W, KEY_X, KEY_Y, KEY_Z, KEY_1, KEY_2, 	  	  
-/* 48-55 */	KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0, 
+/* 40-47 */	KEY_U, KEY_V, KEY_W, KEY_X, KEY_Y, KEY_Z, KEY_1, KEY_2,
+/* 48-55 */	KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0,
 /* 56-63 */	KEY_ENTER, KEY_ESC, KEY_BACKSPACE, KEY_TAB, KEY_SPACE, KEY_MINUS, KEY_EQUAL, KEY_LEFTBRACE,
 		/* END 04 */
-	  
+
 		/* BEGIN 05 */
-/* 64-71 */	KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 72-79 */	KEY_RIGHTBRACE, KEY_BACKSLASH, KEY_RIGHTBRACE, KEY_SEMICOLON, KEY_APOSTROPHE, KEY_GRAVE, KEY_COMMA, KEY_DOT,   
+/* 64-71 */	KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 72-79 */	KEY_RIGHTBRACE, KEY_BACKSLASH, KEY_RIGHTBRACE, KEY_SEMICOLON, KEY_APOSTROPHE, KEY_GRAVE, KEY_COMMA, KEY_DOT,
 /* 80-87 */	KEY_SLASH, KEY_CAPSLOCK, KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6,
 /* 88-95 */	KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12, KEY_SYSRQ, KEY_SCROLLLOCK,
-/* 96-103 */	KEY_PAUSE, KEY_INSERT, KEY_HOME, KEY_PAGEUP, KEY_DELETE, KEY_END, KEY_PAGEDOWN, KEY_RIGHT, 
+/* 96-103 */	KEY_PAUSE, KEY_INSERT, KEY_HOME, KEY_PAGEUP, KEY_DELETE, KEY_END, KEY_PAGEDOWN, KEY_RIGHT,
 /* 104-111 */   KEY_LEFT, KEY_DOWN, KEY_UP, KEY_NUMLOCK, KEY_KPSLASH, KEY_KPASTERISK, KEY_KPMINUS, KEY_KPPLUS,
-/* 112-119 */   KEY_KPENTER, KEY_KP1, KEY_KP2, KEY_KP3, KEY_KP4, KEY_KP5, KEY_KP6, KEY_KP7,   
+/* 112-119 */   KEY_KPENTER, KEY_KP1, KEY_KP2, KEY_KP3, KEY_KP4, KEY_KP5, KEY_KP6, KEY_KP7,
 /* 120-127 */   KEY_KP8, KEY_KP9, KEY_KP0, KEY_KPDOT, KEY_102ND, KEY_MENU, KEY_RESERVED, KEY_RESERVED,
 		/* END 05 */
-	  
-	        /* 01 */
+
+		/* BEGIN 01 */
 /* 128-135 */   KEY_VOLUMEDOWN, KEY_VOLUMEUP, KEY_MEDIA, KEY_MUTE, KEY_PAUSE, KEY_PREVIOUSSONG, KEY_PLAYPAUSE, KEY_NEXTSONG,
 /* 136-143 */   KEY_MAIL, KEY_HOMEPAGE, KEY_CALC, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
-/* 144-151 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 152-159 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 160-167 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 168-175 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 176-183 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 184-191 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-	  
+/* 144-151 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 152-159 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 160-167 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 168-175 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 176-183 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 184-191 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+		/* END 01 */
+
 		/* BEGIN 06 */
-/* 192-199 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
+/* 192-199 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
 /* 200-207 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
-/* 208-215 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 216-223 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 224-231 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_SLASH,   
-/* 232-239 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 240-247 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
-/* 248-255 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,   
+/* 208-215 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 216-223 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 224-231 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_SLASH,
+/* 232-239 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 240-247 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
+/* 248-255 */   KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED, KEY_RESERVED,
 		/* END 06 */
 };
 
@@ -111,12 +112,11 @@ static void usb_kbd_irq(struct urb *urb)
 {
 	struct usb_kbd *kbd = urb->context;
 	int i, j, offset;
-	char keys[9];
-	
+
 	switch (urb->status) {
 	case 0:			/* success */
 		break;
- 	case -ECONNRESET:	/* unlink */
+	case -ECONNRESET:	/* unlink */
 	case -ENOENT:
 	case -ESHUTDOWN:
 		return;
@@ -126,127 +126,135 @@ static void usb_kbd_irq(struct urb *urb)
 	}
 
 /*
- 	printk("Keyup keycode: ");		
+	printk("Keyup keycode: ");
 
- 	for (i = 0; i < 8; i++)
- 	    printk("%d ", kbd->old[i]);		
-
-	printk("\n");
-*/
-
-/*
-        // The following lines are for logging keypresses to the 
-	// kernel dmesg facility. Uncomment the following lines
-	// to capture the keycode for any non-functioning keys
-	// and open a new issue on bitbucket.org with the key 
-	// you pressed and the keycode output below. 
-	
- 	printk("Keydown keycode: ");		
-
- 	for (i = 0; i < 8; i++)
- 	    printk("%d ", kbd->new[i]);		
+	for (i = 0; i < 8; i++)
+		printk("%d ", kbd->old[i]);
 
 	printk("\n");
 */
 
+#if 0
+	/*
+	 * The following lines are for logging keypresses to the
+	 * kernel dmesg facility. Uncomment the following lines
+	 * to capture the keycode for any non-functioning keys
+	 * and open a new issue on bitbucket.org with the key
+	 * you pressed and the keycode output below.
+	 */
 
-	if (kbd->new[0] == 1) {	    
-	    // volume down 
-	    if (kbd->new[1] == 234 && kbd->old[1] != 234)
-		input_report_key(kbd->dev, az_kbd_keycode[128], 1);
-	    if (kbd->old[1] == 234 && kbd->new[1] != 234)
-		input_report_key(kbd->dev, az_kbd_keycode[128], 0);
 	
-	    // volume up
- 	    if (kbd->new[1] == 233 && kbd->old[1] != 233) 
- 		input_report_key(kbd->dev, az_kbd_keycode[129], 1);
- 	    if (kbd->old[1] == 233 && kbd->new[1] != 233) 
- 		input_report_key(kbd->dev, az_kbd_keycode[129], 0);            
-            
-            // Media
-            if (kbd->new[1] == 131 && kbd->old[1] != 131)
-              input_report_key(kbd->dev, az_kbd_keycode[130], 1);
-            if (kbd->old[1] == 131 && kbd->new[1] != 131)
-              input_report_key(kbd->dev, az_kbd_keycode[130], 0);
 
-            // Mute
-            if (kbd->new[1] == 226 && kbd->old[1] != 226)
-              input_report_key(kbd->dev, az_kbd_keycode[131], 1);
-            if (kbd->old[1] == 226 && kbd->new[1] != 226)
-              input_report_key(kbd->dev, az_kbd_keycode[131], 0);
+	printk("Keydown keycode: ");
 
-            // Stop
-            if (kbd->new[1] == 183 && kbd->old[1] != 183)
-              input_report_key(kbd->dev, az_kbd_keycode[132], 1);
-            if (kbd->old[1] == 183 && kbd->new[1] != 183)
-              input_report_key(kbd->dev, az_kbd_keycode[132], 0);
+	for (i = 0; i < 8; i++)
+		printk("%d ", kbd->new[i]);
 
-            // Prev Song
-            if (kbd->new[1] == 182 && kbd->old[1] != 182)
-              input_report_key(kbd->dev, az_kbd_keycode[133], 1);
-            if (kbd->old[1] == 182 && kbd->new[1] != 182)
-              input_report_key(kbd->dev, az_kbd_keycode[133], 0);
+	printk("\n");
+#endif
 
-            // Play/Pause
-            if (kbd->new[1] == 205 && kbd->old[1] != 205)
-              input_report_key(kbd->dev, az_kbd_keycode[134], 1);
-            if (kbd->old[1] == 205 && kbd->new[1] != 205)
-              input_report_key(kbd->dev, az_kbd_keycode[134], 0);
 
-            // Next Song
-            if (kbd->new[1] == 181 && kbd->old[1] != 181)
-              input_report_key(kbd->dev, az_kbd_keycode[135], 1);
-            if (kbd->old[1] == 181 && kbd->new[1] != 181)
-              input_report_key(kbd->dev, az_kbd_keycode[135], 0);
+	if (kbd->new[0] == 1) {
+		/* volume down */
+		if (kbd->new[1] == 234 && kbd->old[1] != 234)
+			input_report_key(kbd->dev, az_kbd_keycode[128], 1);
+		if (kbd->old[1] == 234 && kbd->new[1] != 234)
+			input_report_key(kbd->dev, az_kbd_keycode[128], 0);
 
-            // Mail
-            if (kbd->new[1] == 138 && kbd->old[1] != 138)
-              input_report_key(kbd->dev, az_kbd_keycode[136], 1);
-            if (kbd->old[1] == 138 && kbd->new[1] != 138)
-              input_report_key(kbd->dev, az_kbd_keycode[136], 0);
+		/* volume up */
+		if (kbd->new[1] == 233 && kbd->old[1] != 233)
+			input_report_key(kbd->dev, az_kbd_keycode[129], 1);
+		if (kbd->old[1] == 233 && kbd->new[1] != 233)
+			input_report_key(kbd->dev, az_kbd_keycode[129], 0);
 
-            // Homepage
-            if (kbd->new[1] == 35 && kbd->old[1] != 35)
-              input_report_key(kbd->dev, az_kbd_keycode[137], 1);
-            if (kbd->old[1] == 35 && kbd->new[1] != 35)
-              input_report_key(kbd->dev, az_kbd_keycode[137], 0);
+		/* Media */
+		if (kbd->new[1] == 131 && kbd->old[1] != 131)
+			input_report_key(kbd->dev, az_kbd_keycode[130], 1);
+		if (kbd->old[1] == 131 && kbd->new[1] != 131)
+			input_report_key(kbd->dev, az_kbd_keycode[130], 0);
 
-            // Calc
-            if (kbd->new[1] == 146 && kbd->old[1] != 146)
-              input_report_key(kbd->dev, az_kbd_keycode[138], 1);
-            if (kbd->old[1] == 146 && kbd->new[1] != 146)
-              input_report_key(kbd->dev, az_kbd_keycode[138], 0);
+		/* Mute */
+		if (kbd->new[1] == 226 && kbd->old[1] != 226)
+			input_report_key(kbd->dev, az_kbd_keycode[131], 1);
+		if (kbd->old[1] == 226 && kbd->new[1] != 226)
+			input_report_key(kbd->dev, az_kbd_keycode[131], 0);
+
+		/* Stop */
+		if (kbd->new[1] == 183 && kbd->old[1] != 183)
+			input_report_key(kbd->dev, az_kbd_keycode[132], 1);
+		if (kbd->old[1] == 183 && kbd->new[1] != 183)
+			input_report_key(kbd->dev, az_kbd_keycode[132], 0);
+
+		/* Prev Song */
+		if (kbd->new[1] == 182 && kbd->old[1] != 182)
+			input_report_key(kbd->dev, az_kbd_keycode[133], 1);
+		if (kbd->old[1] == 182 && kbd->new[1] != 182)
+			input_report_key(kbd->dev, az_kbd_keycode[133], 0);
+
+		/* Play/Pause */
+		if (kbd->new[1] == 205 && kbd->old[1] != 205)
+			input_report_key(kbd->dev, az_kbd_keycode[134], 1);
+		if (kbd->old[1] == 205 && kbd->new[1] != 205)
+			input_report_key(kbd->dev, az_kbd_keycode[134], 0);
+
+		/* Next Song */
+		if (kbd->new[1] == 181 && kbd->old[1] != 181)
+			input_report_key(kbd->dev, az_kbd_keycode[135], 1);
+		if (kbd->old[1] == 181 && kbd->new[1] != 181)
+			input_report_key(kbd->dev, az_kbd_keycode[135], 0);
+
+		/* Mail */
+		if (kbd->new[1] == 138 && kbd->old[1] != 138)
+			input_report_key(kbd->dev, az_kbd_keycode[136], 1);
+		if (kbd->old[1] == 138 && kbd->new[1] != 138)
+			input_report_key(kbd->dev, az_kbd_keycode[136], 0);
+
+		/* Homepage */
+		if (kbd->new[1] == 35 && kbd->old[1] != 35)
+			input_report_key(kbd->dev, az_kbd_keycode[137], 1);
+		if (kbd->old[1] == 35 && kbd->new[1] != 35)
+			input_report_key(kbd->dev, az_kbd_keycode[137], 0);
+
+		/* Calc */
+		if (kbd->new[1] == 146 && kbd->old[1] != 146)
+			input_report_key(kbd->dev, az_kbd_keycode[138], 1);
+		if (kbd->old[1] == 146 && kbd->new[1] != 146)
+			input_report_key(kbd->dev, az_kbd_keycode[138], 0);
+	} else if (kbd->new[0] == 4) {
+		for (j = 1; j < 8; j++) {
+			offset = j * 8;
+			for (i = 0; i < 8; i++)
+				input_report_key(kbd->dev,
+						 az_kbd_keycode[offset + i],
+						 (kbd->new[j] >> i) & 1);
+		}
+	} else if (kbd->new[0] == 5) {
+		for (j = 1; j < 8; j++) {
+			offset = (j * 8) + 64;
+			for (i = 0; i < 8; i++)
+				input_report_key(kbd->dev,
+						 az_kbd_keycode[offset + i],
+						 (kbd->new[j] >> i) & 1);
+		}
+	} else if (kbd->new[0] == 6) {
+		for (j = 1; j < 8; j++) {
+			offset = (j * 8) + 192;
+			for (i = 0; i < 8; i++)
+				input_report_key(kbd->dev,
+						 az_kbd_keycode[offset + i],
+						 (kbd->new[j] >> i) & 1);
+		}
 	}
- 	else if (kbd->new[0] == 4) {
- 	    for (j = 1; j < 8; j++) {
- 		offset = j * 8;
- 		for (i = 0; i < 8; i++)
- 		    input_report_key(kbd->dev, az_kbd_keycode[offset + i], (kbd->new[j] >> i) & 1);	  
- 	    }
- 	}
- 	else if (kbd->new[0] == 5) {
- 	    for (j = 1; j < 8; j++) {
- 		offset = (j * 8) + 64;
- 		for (i = 0; i < 8; i++)
- 		    input_report_key(kbd->dev, az_kbd_keycode[offset + i], (kbd->new[j] >> i) & 1);	  		
- 	    }
- 	}
- 	else if (kbd->new[0] == 6) {
- 	    for (j = 1; j < 8; j++) {
- 		offset = (j * 8) + 192;
- 		for (i = 0; i < 8; i++)
- 		    input_report_key(kbd->dev, az_kbd_keycode[offset + i], (kbd->new[j] >> i) & 1);	  		
- 	    }
- 	}
-	
+
 	input_sync(kbd->dev);
 
 	memcpy(kbd->old, kbd->new, 8);
 
 resubmit:
-	i = usb_submit_urb (urb, GFP_ATOMIC);
+	i = usb_submit_urb(urb, GFP_ATOMIC);
 	if (i)
-		hid_err(urb->dev, "can't resubmit intr, %s-%s/input0, status %d",
+		hid_err(urb->dev,
+			"can't resubmit intr, %s-%s/input0, status %d",
 			kbd->usbdev->bus->bus_name,
 			kbd->usbdev->devpath, i);
 }
@@ -259,8 +267,10 @@ static int usb_kbd_event(struct input_dev *dev, unsigned int type,
 	if (type != EV_LED)
 		return -1;
 
-	kbd->newleds = (!!test_bit(LED_KANA,    dev->led) << 3) | (!!test_bit(LED_COMPOSE, dev->led) << 3) |
-		       (!!test_bit(LED_SCROLLL, dev->led) << 2) | (!!test_bit(LED_CAPSL,   dev->led) << 1) |
+	kbd->newleds = (!!test_bit(LED_KANA,    dev->led) << 3) |
+		       (!!test_bit(LED_COMPOSE, dev->led) << 3) |
+		       (!!test_bit(LED_SCROLLL, dev->led) << 2) |
+		       (!!test_bit(LED_CAPSL,   dev->led) << 1) |
 		       (!!test_bit(LED_NUML,    dev->led));
 
 	if (kbd->led->status == -EINPROGRESS)
@@ -315,15 +325,20 @@ static void usb_kbd_close(struct input_dev *dev)
 
 static int usb_kbd_alloc_mem(struct usb_device *dev, struct usb_kbd *kbd)
 {
-	if (!(kbd->irq = usb_alloc_urb(0, GFP_KERNEL)))
+	kbd->irq = usb_alloc_urb(0, GFP_KERNEL);
+	if (!kbd->irq)
 		return -1;
-	if (!(kbd->led = usb_alloc_urb(0, GFP_KERNEL)))
+	kbd->led = usb_alloc_urb(0, GFP_KERNEL);
+	if (!kbd->led)
 		return -1;
-	if (!(kbd->new = usb_alloc_coherent(dev, 8, GFP_ATOMIC, &kbd->new_dma)))
+	kbd->new = usb_alloc_coherent(dev, 8, GFP_ATOMIC, &kbd->new_dma);
+	if (!kbd->new)
 		return -1;
-	if (!(kbd->cr = kmalloc(sizeof(struct usb_ctrlrequest), GFP_KERNEL)))
+	kbd->cr = kmalloc(sizeof(struct usb_ctrlrequest), GFP_KERNEL);
+	if (!kbd->cr)
 		return -1;
-	if (!(kbd->leds = usb_alloc_coherent(dev, 1, GFP_ATOMIC, &kbd->leds_dma)))
+	kbd->leds = usb_alloc_coherent(dev, 1, GFP_ATOMIC, &kbd->leds_dma);
+	if (!kbd->leds)
 		return -1;
 
 	return 0;
@@ -348,7 +363,7 @@ static int usb_kbd_probe(struct usb_interface *iface,
 	struct input_dev *input_dev;
 	int i, pipe, maxp;
 	int error = -ENOMEM;
-	
+
 	interface = iface->cur_altsetting;
 
 	if (interface->desc.bNumEndpoints != 1)
@@ -385,7 +400,7 @@ static int usb_kbd_probe(struct usb_interface *iface,
 			 "USB HIDBP Keyboard %04x:%04x",
 			 le16_to_cpu(dev->descriptor.idVendor),
 			 le16_to_cpu(dev->descriptor.idProduct));
-		
+
 	printk("<1>aziokbd: detected %s\n", kbd->name);
 
 	usb_make_path(dev, kbd->phys, sizeof(kbd->phys));
@@ -406,7 +421,7 @@ static int usb_kbd_probe(struct usb_interface *iface,
 
 	for (i = 0; i < 255; i++)
 		set_bit(az_kbd_keycode[i], input_dev->keybit);
-	
+
 	clear_bit(0, input_dev->keybit);
 
 	input_dev->event = usb_kbd_event;
@@ -422,7 +437,7 @@ static int usb_kbd_probe(struct usb_interface *iface,
 	kbd->cr->bRequestType = USB_TYPE_CLASS | USB_RECIP_INTERFACE;
 	kbd->cr->bRequest = 0x09;
 	kbd->cr->wValue = cpu_to_le16(0x200);
-	//kbd->cr->wIndex = cpu_to_le16(interface->desc.bInterfaceNumber);
+	/*kbd->cr->wIndex = cpu_to_le16(interface->desc.bInterfaceNumber);*/
 	kbd->cr->wIndex = cpu_to_le16(0);
 	kbd->cr->wLength = cpu_to_le16(1);
 
@@ -440,9 +455,9 @@ static int usb_kbd_probe(struct usb_interface *iface,
 	device_set_wakeup_enable(&dev->dev, 1);
 	return 0;
 
-fail2:	
+fail2:
 	usb_kbd_free_mem(dev, kbd);
-fail1:	
+fail1:
 	input_free_device(input_dev);
 	kfree(kbd);
 	return error;
@@ -450,7 +465,7 @@ fail1:
 
 static void usb_kbd_disconnect(struct usb_interface *intf)
 {
-	struct usb_kbd *kbd = usb_get_intfdata (intf);
+	struct usb_kbd *kbd = usb_get_intfdata(intf);
 
 	usb_set_intfdata(intf, NULL);
 	if (kbd) {
@@ -461,12 +476,12 @@ static void usb_kbd_disconnect(struct usb_interface *intf)
 	}
 }
 
-static struct usb_device_id usb_kbd_id_table [] = {
+static struct usb_device_id usb_kbd_id_table[] = {
 	{ USB_DEVICE(ML_VENDOR_ID, ML_PRODUCT_ID) },
 	{ }						/* Terminating entry */
 };
 
-MODULE_DEVICE_TABLE (usb, usb_kbd_id_table);
+MODULE_DEVICE_TABLE(usb, usb_kbd_id_table);
 
 static struct usb_driver usb_kbd_driver = {
 	.name =		"aziokbd",
@@ -478,6 +493,7 @@ static struct usb_driver usb_kbd_driver = {
 static int __init usb_kbd_init(void)
 {
 	int result = usb_register(&usb_kbd_driver);
+
 	if (result == 0)
 		printk(KERN_INFO KBUILD_MODNAME ": " DRIVER_VERSION ":"
 				DRIVER_DESC "\n");
