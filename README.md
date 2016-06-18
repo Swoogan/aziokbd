@@ -7,7 +7,7 @@ Written for the Azio L70 USB Keyboard: [L70 USB Backlit Gaming Keyboard (KB501)]
 
 > NOTE: Makefile and instructions are only tested on Ubuntu, however they are known to work on Debian, Arch, Fedora, and Manjaro.
 
-Reportedy supports the following keyboards as well:
+Reports suggest it supports the following keyboards as well:
 
  * SL-6432-BK - Speedlink LUCIDIS Comfort Illuminated Keyboard
  * COUGAR 200K Scissor Gaming Keyboard
