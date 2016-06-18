@@ -3,7 +3,7 @@
 For Chipset `0x0c45`:`0x7603`
 The kernel reports the chipset as `SONiX USB Keyboard`
 
-Written for the Azio L70 USB Keyboard: [L70 USB Backlit Gaming Keyboard (KB501)](http://www.aziocorp.com/en/keyboards/23-l70-usb-backlit-gaming-keyboard-kb501-0676151010719.html)
+Written for the Azio L70 USB Keyboard: [L70 USB Backlit Gaming Keyboard (KB501)](http://www.aziocorp.com/webe/html/products/index2.aspx?num=50)
 
 > NOTE: Makefile and instructions are only tested on Ubuntu, however they are known to work on Debian, Arch, Fedora, and Manjaro.
 
