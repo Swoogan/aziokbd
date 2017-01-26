@@ -101,7 +101,10 @@ static const unsigned char az_kbd_keycode[256] = {
 struct usb_kbd {
 	struct input_dev *dev;
 	struct usb_device *usbdev;
-	unsigned char old[8];
+	unsigned char old_01[8];
+	unsigned char old_04[8];
+	unsigned char old_05[8];
+	unsigned char old_06[8];
 	struct urb *irq, *led;
 	unsigned char newleds;
 	char name[128];
@@ -118,6 +121,7 @@ static void usb_kbd_irq(struct urb *urb)
 {
 	struct usb_kbd *kbd = urb->context;
 	int i, j, offset;
+	unsigned char modified_mask;
 
 	switch (urb->status) {
 	case 0:			/* success */
@@ -162,99 +166,120 @@ static void usb_kbd_irq(struct urb *urb)
 
 	if (kbd->new[0] == 1) {
 		/* volume down */
-		if (kbd->new[1] == 234 && kbd->old[1] != 234)
+		if (kbd->new[1] == 234 && kbd->old_01[1] != 234)
 			input_report_key(kbd->dev, az_kbd_keycode[128], 1);
-		if (kbd->old[1] == 234 && kbd->new[1] != 234)
+		if (kbd->old_01[1] == 234 && kbd->new[1] != 234)
 			input_report_key(kbd->dev, az_kbd_keycode[128], 0);
 
 		/* volume up */
-		if (kbd->new[1] == 233 && kbd->old[1] != 233)
+		if (kbd->new[1] == 233 && kbd->old_01[1] != 233)
 			input_report_key(kbd->dev, az_kbd_keycode[129], 1);
-		if (kbd->old[1] == 233 && kbd->new[1] != 233)
+		if (kbd->old_01[1] == 233 && kbd->new[1] != 233)
 			input_report_key(kbd->dev, az_kbd_keycode[129], 0);
 
 		/* Media */
-		if (kbd->new[1] == 131 && kbd->old[1] != 131)
+		if (kbd->new[1] == 131 && kbd->old_01[1] != 131)
 			input_report_key(kbd->dev, az_kbd_keycode[130], 1);
-		if (kbd->old[1] == 131 && kbd->new[1] != 131)
+		if (kbd->old_01[1] == 131 && kbd->new[1] != 131)
 			input_report_key(kbd->dev, az_kbd_keycode[130], 0);
 
 		/* Mute */
-		if (kbd->new[1] == 226 && kbd->old[1] != 226)
+		if (kbd->new[1] == 226 && kbd->old_01[1] != 226)
 			input_report_key(kbd->dev, az_kbd_keycode[131], 1);
-		if (kbd->old[1] == 226 && kbd->new[1] != 226)
+		if (kbd->old_01[1] == 226 && kbd->new[1] != 226)
 			input_report_key(kbd->dev, az_kbd_keycode[131], 0);
 
 		/* Stop */
-		if (kbd->new[1] == 183 && kbd->old[1] != 183)
+		if (kbd->new[1] == 183 && kbd->old_01[1] != 183)
 			input_report_key(kbd->dev, az_kbd_keycode[132], 1);
-		if (kbd->old[1] == 183 && kbd->new[1] != 183)
+		if (kbd->old_01[1] == 183 && kbd->new[1] != 183)
 			input_report_key(kbd->dev, az_kbd_keycode[132], 0);
 
 		/* Prev Song */
-		if (kbd->new[1] == 182 && kbd->old[1] != 182)
+		if (kbd->new[1] == 182 && kbd->old_01[1] != 182)
 			input_report_key(kbd->dev, az_kbd_keycode[133], 1);
-		if (kbd->old[1] == 182 && kbd->new[1] != 182)
+		if (kbd->old_01[1] == 182 && kbd->new[1] != 182)
 			input_report_key(kbd->dev, az_kbd_keycode[133], 0);
 
 		/* Play/Pause */
-		if (kbd->new[1] == 205 && kbd->old[1] != 205)
+		if (kbd->new[1] == 205 && kbd->old_01[1] != 205)
 			input_report_key(kbd->dev, az_kbd_keycode[134], 1);
-		if (kbd->old[1] == 205 && kbd->new[1] != 205)
+		if (kbd->old_01[1] == 205 && kbd->new[1] != 205)
 			input_report_key(kbd->dev, az_kbd_keycode[134], 0);
 
 		/* Next Song */
-		if (kbd->new[1] == 181 && kbd->old[1] != 181)
+		if (kbd->new[1] == 181 && kbd->old_01[1] != 181)
 			input_report_key(kbd->dev, az_kbd_keycode[135], 1);
-		if (kbd->old[1] == 181 && kbd->new[1] != 181)
+		if (kbd->old_01[1] == 181 && kbd->new[1] != 181)
 			input_report_key(kbd->dev, az_kbd_keycode[135], 0);
 
 		/* Mail */
-		if (kbd->new[1] == 138 && kbd->old[1] != 138)
+		if (kbd->new[1] == 138 && kbd->old_01[1] != 138)
 			input_report_key(kbd->dev, az_kbd_keycode[136], 1);
-		if (kbd->old[1] == 138 && kbd->new[1] != 138)
+		if (kbd->old_01[1] == 138 && kbd->new[1] != 138)
 			input_report_key(kbd->dev, az_kbd_keycode[136], 0);
 
 		/* Homepage */
-		if (kbd->new[1] == 35 && kbd->old[1] != 35)
+		if (kbd->new[1] == 35 && kbd->old_01[1] != 35)
 			input_report_key(kbd->dev, az_kbd_keycode[137], 1);
-		if (kbd->old[1] == 35 && kbd->new[1] != 35)
+		if (kbd->old_01[1] == 35 && kbd->new[1] != 35)
 			input_report_key(kbd->dev, az_kbd_keycode[137], 0);
 
 		/* Calc */
-		if (kbd->new[1] == 146 && kbd->old[1] != 146)
+		if (kbd->new[1] == 146 && kbd->old_01[1] != 146)
 			input_report_key(kbd->dev, az_kbd_keycode[138], 1);
-		if (kbd->old[1] == 146 && kbd->new[1] != 146)
+		if (kbd->old_01[1] == 146 && kbd->new[1] != 146)
 			input_report_key(kbd->dev, az_kbd_keycode[138], 0);
+		memcpy(kbd->old_01, kbd->new, 8);
 	} else if (kbd->new[0] == 4) {
 		for (j = 1; j < 8; j++) {
 			offset = j * 8;
-			for (i = 0; i < 8; i++)
-				input_report_key(kbd->dev,
-						 az_kbd_keycode[offset + i],
-						 (kbd->new[j] >> i) & 1);
+			modified_mask = kbd->new[j] ^ kbd->old_04[j];
+			kbd->old_04[j] = kbd->new[j];
+			for (i = 0; i < 8; i++) {
+				if (modified_mask & 1) {
+					input_report_key(kbd->dev,
+							 az_kbd_keycode[offset + i],
+							 (kbd->new[j] & 1));
+				}
+				modified_mask >>= 1;
+				kbd->new[j] >>= 1;
+			}
 		}
 	} else if (kbd->new[0] == 5) {
 		for (j = 1; j < 8; j++) {
 			offset = (j * 8) + 64;
-			for (i = 0; i < 8; i++)
-				input_report_key(kbd->dev,
-						 az_kbd_keycode[offset + i],
-						 (kbd->new[j] >> i) & 1);
+			modified_mask = kbd->new[j] ^ kbd->old_05[j];
+			kbd->old_05[j] = kbd->new[j];
+			for (i = 0; i < 8; i++) {
+				if (modified_mask & 1) {
+					input_report_key(kbd->dev,
+							 az_kbd_keycode[offset + i],
+							 (kbd->new[j] & 1));
+				}
+				modified_mask >>= 1;
+				kbd->new[j] >>= 1;
+			}
 		}
 	} else if (kbd->new[0] == 6) {
 		for (j = 1; j < 8; j++) {
 			offset = (j * 8) + 192;
-			for (i = 0; i < 8; i++)
-				input_report_key(kbd->dev,
-						 az_kbd_keycode[offset + i],
-						 (kbd->new[j] >> i) & 1);
+			modified_mask = kbd->new[j] ^ kbd->old_06[j];
+			kbd->old_06[j] = kbd->new[j];
+			for (i = 0; i < 8; i++) {
+				if (modified_mask & 1) {
+					input_report_key(kbd->dev,
+							 az_kbd_keycode[offset + i],
+							 (kbd->new[j] & 1));
+				}
+				modified_mask >>= 1;
+				kbd->new[j] >>= 1;
+			}
 		}
 	}
 
 	input_sync(kbd->dev);
 
-	memcpy(kbd->old, kbd->new, 8);
 
 resubmit:
 	i = usb_submit_urb(urb, GFP_ATOMIC);
