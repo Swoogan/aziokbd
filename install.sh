@@ -16,7 +16,9 @@ if [[ $1 != 'dkms' ]]; then
     make install
 else
     echo '## Installing package with DKMS ##'
-    make dkms
+    sed -ie '/MAKE\[0\]/d' dkms.conf
+    sed -ie "$ a\\MAKE\[0\]=\"make ${BKSL}\"" dkms.conf
+    make ${BKSL} dkms
 fi
 
 quirk='0x0c45:0x7603:0x0007'
