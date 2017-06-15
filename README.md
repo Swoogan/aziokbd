@@ -16,6 +16,7 @@ Reports suggest it supports the following keyboards as well:
  * Perixx P1800
  * Modecom MC800-Volcano 
  * Serioux Radiant KBL-003
+ * SEISA DN-V370 multimedia keyboard
 
 # Installation ##
 ## DKMS ##
@@ -71,4 +72,3 @@ Create a new file in `/etc/default/grub.d/`. For example, you might call it `azi
 Then run `sudo update-grub` and reboot.
 
 Again, if you find that `0x4` doesn't work, try `0x7`.
-
