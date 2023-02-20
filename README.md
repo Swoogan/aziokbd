@@ -22,13 +22,13 @@ Reports suggest it supports the following keyboards as well:
 ## DKMS ##
 
     # debian-based:
-    sudo apt-get install mercurial build-essential linux-headers-generic dkms
+    sudo apt-get install git build-essential linux-headers-generic dkms
     
     # fedora:
     sudo dnf install kernel-devel kernel-headers
     sudo dnf groupinstall "Development Tools" "Development Libraries"
     
-    hg clone https://bitbucket.org/Swoogan/aziokbd
+    git clone https://github.com/Swoogan/aziokbd.git
     cd aziokbd
     sudo ./install.sh dkms
     
@@ -36,8 +36,8 @@ Reports suggest it supports the following keyboards as well:
 
 ## Manual Install ##
 
-    sudo apt-get install mercurial build-essential linux-headers-generic
-    hg clone https://bitbucket.org/Swoogan/aziokbd
+    sudo apt-get install git build-essential linux-headers-generic
+    git clone https://github.com/Swoogan/aziokbd.git
     cd aziokbd
     sudo ./install.sh
 
