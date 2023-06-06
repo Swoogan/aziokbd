@@ -21,7 +21,7 @@ else
     make ${BKSL} dkms
 fi
 
-quirk='0x0c45:0x7603:0x0007'
+quirk='0x0c45:0x7603:0x0004'
 modquirk="options usbhid quirks=$quirk"
 grubquirk="usbhid.quirks=$quirk"
 

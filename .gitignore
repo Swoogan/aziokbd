@@ -1,0 +1,13 @@
+.Module.symvers.cmd
+.aziokbd.ko.cmd
+.aziokbd.mod.cmd
+.aziokbd.mod.o.cmd
+.aziokbd.o.cmd
+.modules.order.cmd
+Module.symvers
+aziokbd.ko
+aziokbd.mod
+aziokbd.mod.c
+aziokbd.mod.o
+aziokbd.o
+modules.order
