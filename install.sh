@@ -16,8 +16,8 @@ if [[ $1 != 'dkms' ]]; then
     make install
 else
     echo '## Installing package with DKMS ##'
-    sed -ie '/MAKE\[0\]/d' dkms.conf
-    sed -ie "$ a\\MAKE\[0\]=\"make ${BKSL}\"" dkms.conf
+    sed -i -e '/MAKE\[0\]/d' dkms.conf
+    sed -i -e "$ a\\MAKE\[0\]=\"make KVER=\$kernelver ${BKSL}\"" dkms.conf
     make ${BKSL} dkms
 fi
 
